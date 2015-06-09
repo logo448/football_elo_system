@@ -14,6 +14,7 @@ def margin_victory_multiplier(win, lose, pd):
     return (math.log(abs(pd)+1)) * (2.2/((win-lose)*.001+2.2))
 
 
+# cleanup
 def new_elo(a, b, a_win_bool, pd):
     if a_win_bool == 1:
         win = a
@@ -25,3 +26,7 @@ def new_elo(a, b, a_win_bool, pd):
         lose = a
         change = _k*margin_victory_multiplier(win, lose, pd)
         return a + (1-change), b + change
+
+
+def new_season_ratings(old):
+    return ((old-1500)/3)-old
